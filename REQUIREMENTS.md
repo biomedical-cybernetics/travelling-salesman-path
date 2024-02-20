@@ -9,7 +9,7 @@ This software required [Concorde](https://www.math.uwaterloo.ca/tsp/concorde.htm
 1. Download and install Cygwin (**32 bit version!**) from [https://www.cygwin.com/](https://www.cygwin.com/).
 2. When installing chose a path of your own preference; however, we recommend to make the installation at `C:/cygwin32/bin/`. If you chose a different path, please update the [SettingsLoader.m](./SettingsLoader.m) accordingly.
 
-*Note: It is not mandatory to add Cygwin into your enviroment variables for running concorde.*
+*Note: It is not mandatory to add Cygwin into your environment variables for running concorde.*
 
 ### Concorde
 
