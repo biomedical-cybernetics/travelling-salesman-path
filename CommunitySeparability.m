@@ -1,14 +1,32 @@
-function [measures, metadata] = CommunitySeparability(embedding, communities, positives, variant, enablePermutations)
-    %TODO: refactor input arguments
-    if nargin < 4
-        error('Not enough input arguments');
-    end
+function [measures, metadata] = CommunitySeparability(embedding, communities, variant, varargin)
+    p = inputParser;
+    addRequired(p, 'embedding',...
+        @(x) assert(~isempty(x) && isnumeric(x) && size(x, 2) >= 2, 'It must be a matrix of at least two dimensions.'));
+    addRequired(p, 'communities',...
+        @(x) assert(~isempty(x) && (iscellstr(x) || isnumeric(x)), 'It must be a numeric array or a cell array of strings.'));
+    addRequired(p, 'variant',...
+        @(x) assert(any(ismember(x, {'tsps', 'cps', 'ldps'})), 'It must be one of: tsps, cps, or ldps.'));
+    addParameter(p, 'positives', [],...
+        @(x) assert(~isempty(x) && (iscellstr(x) || isnumeric(x)), 'It must be a numeric array or a cell array of strings.'));
+    addParameter(p, 'permutations', 0,...
+        @(x) assert(isnumeric(x) && x >= 0, 'It must be numeric and equal or higher than zero.'));
+    parse(p, embedding, communities, variant, varargin{:});
+    inputs = p.Results;
+
+    embedding = inputs.embedding;
+    communities = inputs.communities;
+    variant = inputs.variant;
+    positives = inputs.positives;
+    permutations = inputs.permutations;
 
     % load runtime settings
     settings
 
     % sanity check
     communities = convertArrayItemsToString(communities);
+    if isempty(positives)
+        positives = generatePositiveClasses(communities);
+    end
     positives = convertArrayItemsToString(positives);
 
     uniqueCommunities = unique(communities);
@@ -50,19 +68,19 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, po
 
         scores = [];
         switch variant
-        case {'mean', 'mode', 'median'}
-            projectedPoints = centroidBasedProjection(dataGroupA, dataGroupB, variant);
+        case {'cps'}
+            projectedPoints = centroidBasedProjection(dataGroupA, dataGroupB, 'median');
             if ~isempty(projectedPoints)
                 scores = convertPointsToOneDimension(projectedPoints);
             end
-        case {'lda'}
+        case {'ldps'}
             pairwiseData = [dataGroupA;dataGroupB];
             pairwiseCommunities = [communitiesGroupA;communitiesGroupB];
             projectedPoints = ldaBasedProjection(pairwiseData, pairwiseCommunities);
             if ~isempty(projectedPoints)
                 scores = convertPointsToOneDimension(projectedPoints);
             end
-        case {'tsp'}
+        case {'tsps'}
             pairwiseData = [dataGroupA;dataGroupB];
             metadata(l).pairwiseData = pairwiseData;
 
@@ -134,9 +152,8 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, po
     measures.mcc = correctedMCC;
     %measures.mroc = correctedmRoc;
 
-    if (enablePermutations)
-        totalPermutations = 10;
-        measures = computePermutations(variant, measures, metadata, communities, positives, totalPermutations);
+    if (permutations > 1)
+        measures = computePermutations(variant, measures, metadata, communities, positives, permutations);
     end
 end
 
