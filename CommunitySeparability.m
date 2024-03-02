@@ -47,7 +47,6 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, va
     aucValues = cell(1, totalPairwiseCombinations);
     auprValues = cell(1, totalPairwiseCombinations);
     mccValues = cell(1, totalPairwiseCombinations);
-    %mRocValues = cell(1, totalPairwiseCombinations);
 
     metadata = struct();
 
@@ -108,7 +107,6 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, va
             aucValues{l} = 0;
             auprValues{l} = 0;
             mccValues{l} = 0;
-            %mRocValues{l} = 0;
             continue;
         end
 
@@ -130,27 +128,21 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, va
 
         % MCC
         mccValues{l} = computeMCC(communitiesMembership,scores,currentPositiveClass);
-
-        % mAUC-ROC
-        %mRocValues{l} = computeMROC(communitiesMembership, scores, currentPositiveClass);
     end
 
     % compile all values from the different groups' combinations
     allAUCROCvalues = [aucValues{:}];
     allAUCPRvalues = [auprValues{:}];
     allMCCvalues = [mccValues{:}];
-    %allmRocValues = [mRocValues{:}];
 
     % Corrected
     correctedAUC = mean(allAUCROCvalues) / (1 + std(allAUCROCvalues));
     correctedAUPR = mean(allAUCPRvalues) / (1 + std(allAUCPRvalues));
     correctedMCC = mean(allMCCvalues) / (1 + std(allMCCvalues));
-    %correctedmRoc = mean(allmRocValues) / (1 + std(allmRocValues));
 
     measures.auc = correctedAUC;
     measures.aupr = correctedAUPR;
     measures.mcc = correctedMCC;
-    %measures.mroc = correctedmRoc;
 
     if (permutations > 1)
         measures = computePermutations(variant, measures, metadata, communities, positives, permutations);
