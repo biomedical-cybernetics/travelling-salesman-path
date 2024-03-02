@@ -1,4 +1,4 @@
-loaded = readmatrix('./sample-data/reduced-halfkernel.txt');
+loaded = readmatrix('./sample-data/Halfkernel.txt');
 embedding = loaded(:, 1:2);
 communities = loaded(:, 3);
 variant = 'tsps';

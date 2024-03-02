@@ -1,4 +1,4 @@
-loaded = readmatrix('./sample-data/reduced-parallel-lines.txt');
+loaded = readmatrix('./sample-data/ParallelLines.txt');
 embedding = loaded(:, 1:2);
 communities = loaded(:, 3);
 variant = 'ldps';
