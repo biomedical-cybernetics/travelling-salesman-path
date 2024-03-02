@@ -281,3 +281,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/matlab,python,windows,macos,linux
+
+# Custom
+TODO.md
