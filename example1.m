@@ -1,12 +1,8 @@
 loaded = readmatrix('./sample-data/reduced-halfkernel.txt');
 embedding = loaded(:, 1:2);
 communities = loaded(:, 3);
-positives = generatePositiveClasses(communities);
-variant = 'tsp';
-enablePermutations = true;
+variant = 'tsps';
 
-%TODO: refactor input arguments
-[cpsIndices, metadata] = CommunitySeparability(embedding, communities, positives, variant, enablePermutations);
+[cpsIndices, cpsIndicesMetadata] = CommunitySeparability(embedding, communities, variant);
 
 disp(cpsIndices);
-disp(metadata);

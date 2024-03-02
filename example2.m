@@ -1,2 +1,13 @@
-%TODO: implement example with permutations
-error('not implemented.');
+loaded = readmatrix('./sample-data/reduced-parallel-lines.txt');
+embedding = loaded(:, 1:2);
+communities = loaded(:, 3);
+variant = 'ldps';
+permutations = 1000;
+
+[cpsPermutations, cpsPermutationsMetadata] = CommunitySeparability(embedding, communities, variant, 'permutations', permutations);
+
+measures = fieldnames(cpsPermutations);
+for ix=1:numel(measures)
+    disp(measures{ix});
+    disp(cpsPermutations.(measures{ix}));
+end
