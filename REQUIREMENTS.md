@@ -1,6 +1,6 @@
 # Requirements
 
-This software required [Concorde](https://www.math.uwaterloo.ca/tsp/concorde.html) to execute calculations. Follow the instructions below to install this dependency in your operating system.
+This software requires [Concorde](https://www.math.uwaterloo.ca/tsp/concorde.html) to execute calculations. Follow the instructions below to install this dependency in your operating system.
 
 ## Windows
 
