@@ -7,14 +7,14 @@ This software requires [Concorde](https://www.math.uwaterloo.ca/tsp/concorde.htm
 ### Cygwin
 
 1. Download and install Cygwin (**32 bit version!**) from [https://www.cygwin.com/](https://www.cygwin.com/).
-2. When installing chose a path of your own preference; however, we recommend to make the installation at `C:/cygwin32/bin/`. If you chose a different path, please update the [SettingsLoader.m](./SettingsLoader.m) accordingly.
+2. When installing chose a path of your own preference; however, we recommend to make the installation at `C:/cygwin32/bin/`. If you chose a different path, please update the [settings.m](./settings.m) file accordingly.
 
 *Note: It is not mandatory to add Cygwin into your environment variables for running concorde.*
 
 ### Concorde
 
 1. Go to [https://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm](https://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm).
-2. Download *Concorde for Windows/Cygwin* and *Linkern for Windows/Cygwin*
+2. Download *Concorde for Windows/Cygwin* and *Linkern for Windows/Cygwin*.
 3. Extract the executables (they are compressed!).
 4. Place the executables in your Cygwin's bin folder. For instance, copy them into `C:/cygwin32/bin/` if you followed the suggested installation in the previous section.
 5. Open your *Windows PowerShell* and run the following command to confirm that your installation was successful.
@@ -73,12 +73,14 @@ If you cannot see this output, then your installation is was not correctly done.
 
 ## Linux
 
-If you are working with linux, the *Concorde for Red Hat Linux 8.0* and *Linkern for Red Hat Linux 8.0* executables are already present in the [bin/](./bin/) folder of this project.
-
-You can try to execute them as follows:
+1. Go to [https://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm](https://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm).
+2. Download the *Concorde* and *Linkern* unix executables.
+3. Create a new `./bin` folder in the root directory of this project. If you chose a different path, please update the [settings.m](./settings.m) file accordingly.
+4. Place the downloaded executables in the `./bin` folder your created in the previous step.
+5. Open your console and run the following command to confirm that your installation was successful.
 
 ```shell
-./concorde -h
+./bin/concorde -h
 ```
 
 You should see the following output in the console:
@@ -127,11 +129,11 @@ Usage: /usr/bin/concorde [-see below-] [dat_file]
          17=GEOM, 18=JOHNSON
 ```
 
-If you cannot see this output, then check if the executables have permissions for execution. You can enable them as follows:
+If you cannot see this output, then check if the downloaded executables have permissions for execution. You can enable them as follows:
 
 ```shell
-chmod +x concorde
-chmmd +x linkern
+chmod +x ./bin/concorde
+chmmd +x ./bin/linkern
 ```
 
 Then try to execute concorde again.
