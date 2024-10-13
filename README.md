@@ -2,6 +2,9 @@
 
 This repository offers a framework for the definition and measure of the geometric separability (linear and nonlinear) of mesoscale patterns in complex data visualization by solving the traveling salesman problem.
 
+**Article Source:** [Geometric separability of mesoscale patterns in embedding representation and visualization of multidimensional data and complex networks](https://journals.plos.org/complexsystems/article?id=10.1371/journal.pcsy.0000012)
+Acevedo A, Wu Y, Traversa FL, Cannistraci CV (2024) Geometric separability of mesoscale patterns in embedding representation and visualization of multidimensional data and complex networks. PLOS Complex Systems 1(2): e0000012. [https://doi.org/10.1371/journal.pcsy.0000012](https://doi.org/10.1371/journal.pcsy.0000012)
+
 ## Before starting
 
 This software requires [Concorde](https://www.math.uwaterloo.ca/tsp/concorde.html) to execute calculations. Check the [requirements](REQUIREMENTS.md) and follow the instructions to install this dependency in your operating system.
