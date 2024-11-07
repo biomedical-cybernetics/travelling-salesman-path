@@ -68,7 +68,7 @@ Usage: /usr/bin/concorde [-see below-] [dat_file]
          17=GEOM, 18=JOHNSON
 ```
 
-If you cannot see this output, then your installation it was not correctly done. Thus, check the steps carefully and try again.
+If you cannot see this output, then your installation was not correctly done. Thus, check the steps carefully and try again.
 
 ## Linux
 
