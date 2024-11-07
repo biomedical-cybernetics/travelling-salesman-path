@@ -7,7 +7,7 @@ This software requires [Concorde](https://www.math.uwaterloo.ca/tsp/concorde.htm
 ### Cygwin
 
 1. Download and install Cygwin (**32 bit version!**) from [https://www.cygwin.com/](https://www.cygwin.com/).
-2. When installing chose a path of your own preference; however, we recommend to make the installation at `C:/cygwin32/bin/`. If you chose a different path, please update the [settings.m](./settings.m) file accordingly.
+2. When installing chose a path of your own preference; however, we recommend to make the installation at `C:/cygwin32/bin/`. If you chose a different path, please update the [LocalSettings.m](./LocalSettings.m) file accordingly.
 
 *Note: It is not mandatory to add Cygwin into your environment variables for running concorde.*
 
@@ -26,7 +26,6 @@ C:/cygwin32/bin/concorde -h
 You should see the following output in the console:
 
 ```shell
-/usr/bin/concorde -h
 Usage: /usr/bin/concorde [-see below-] [dat_file]
    -B    do not branch
    -C #  maximum chunk size in localcuts (default 16)
@@ -69,13 +68,13 @@ Usage: /usr/bin/concorde [-see below-] [dat_file]
          17=GEOM, 18=JOHNSON
 ```
 
-If you cannot see this output, then your installation is was not correctly done. Thus, check the steps carefully and try again.
+If you cannot see this output, then your installation was not correctly done. Thus, check the steps carefully and try again.
 
 ## Linux
 
 1. Go to [https://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm](https://www.math.uwaterloo.ca/tsp/concorde/downloads/downloads.htm).
 2. Download the *Concorde* and *Linkern* unix executables.
-3. Create a new `./bin` folder in the root directory of this project. If you chose a different path, please update the [settings.m](./settings.m) file accordingly.
+3. Create a new `./bin` folder in the root directory of this project. If you chose a different path, please update the [LocalSettings.m](./LocalSettings.m) file accordingly.
 4. Place the downloaded executables in the `./bin` folder your created in the previous step.
 5. Open your console and run the following command to confirm that your installation was successful.
 
@@ -86,7 +85,6 @@ If you cannot see this output, then your installation is was not correctly done.
 You should see the following output in the console:
 
 ```shell
-/usr/bin/concorde -h
 Usage: /usr/bin/concorde [-see below-] [dat_file]
    -B    do not branch
    -C #  maximum chunk size in localcuts (default 16)

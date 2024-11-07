@@ -20,7 +20,7 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, va
     permutations = inputs.permutations;
 
     % load runtime settings
-    settings
+    LocalSettings
 
     % sanity check
     communities = convertArrayItemsToString(communities);
