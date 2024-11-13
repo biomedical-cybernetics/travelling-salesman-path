@@ -104,9 +104,9 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, va
         metadata(l).scores = scores;
 
         if isempty(scores)
-            aucValues{l} = 0;
-            auprValues{l} = 0;
-            mccValues{l} = 0;
+            aucValues{l} = NaN;
+            auprValues{l} = NaN;
+            mccValues{l} = NaN;
             continue;
         end
 
@@ -136,9 +136,9 @@ function [measures, metadata] = CommunitySeparability(embedding, communities, va
     allMCCvalues = [mccValues{:}];
 
     % Corrected
-    correctedAUC = mean(allAUCROCvalues) / (1 + std(allAUCROCvalues));
-    correctedAUPR = mean(allAUCPRvalues) / (1 + std(allAUCPRvalues));
-    correctedMCC = mean(allMCCvalues) / (1 + std(allMCCvalues));
+    correctedAUC = mean(allAUCROCvalues,"omitnan") / (1 + std(allAUCROCvalues,"omitnan"));
+    correctedAUPR = mean(allAUCPRvalues,"omitnan") / (1 + std(allAUCPRvalues,"omitnan"));
+    correctedMCC = mean(allMCCvalues,"omitnan") / (1 + std(allMCCvalues,"omitnan"));
 
     measures.auc = correctedAUC;
     measures.aupr = correctedAUPR;
